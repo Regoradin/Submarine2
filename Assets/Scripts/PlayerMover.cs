@@ -18,7 +18,7 @@ public class PlayerMover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		
 		if (!chair.GetComponent<SteeringWheel> ().seated) {
 			movement = new Vector3 (Input.GetAxis ("Horizontal"), 0.0f, Input.GetAxis ("Vertical"));
 			movement = transform.GetChild (1).TransformDirection (movement);
@@ -26,9 +26,8 @@ public class PlayerMover : MonoBehaviour {
 		}
 
 
-		if (!controller.isGrounded)
-			movement += Vector3.down;
-
+		movement += Vector3.down;
+	
 		controller.Move (movement * speed);
 
 	}

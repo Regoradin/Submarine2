@@ -57,7 +57,8 @@ public class SteeringWheel : MonoBehaviour {
 				GetComponentInParent<Rigidbody> ().AddRelativeForce (forwardMovement * speed);
 				GetComponentInParent<Rigidbody> ().AddTorque(rotation * rotationSpeed);
 
-				Debug.Log (forwardMovement);
+				Debug.Log ("forwardMovement: " + forwardMovement);
+				Debug.Log ("velocity: " + GetComponentInParent<Rigidbody> ().velocity);
 
 			}
 		}
