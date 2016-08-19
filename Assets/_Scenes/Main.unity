@@ -419,7 +419,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 0.5
-  m_AngularDrag: 2
+  m_AngularDrag: 0.5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -475,6 +475,10 @@ Prefab:
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalScale.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
@@ -811,7 +815,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 20, z: 7}
+  m_Size: {x: 7, y: 6.06, z: 7}
   m_Center: {x: 0, y: 0, z: 0.00000047683716}
 --- !u!1 &1863493147
 GameObject:
@@ -931,9 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3898436b0086a844085b8cfe263c2733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 1
-  spinMin: -50
-  spinMax: 50
+  sailUp: 0
 --- !u!1 &2120515227
 GameObject:
   m_ObjectHideFlags: 0

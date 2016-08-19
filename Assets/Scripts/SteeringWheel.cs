@@ -24,6 +24,14 @@ public class SteeringWheel : MonoBehaviour {
 
 	}
 
+
+	//REMOVE UPDATE() AFTER TESTING
+	void Update(){
+
+		Debug.Log (GetComponentInParent<Rigidbody> ().velocity);
+
+	}
+
 	void OnTriggerStay (Collider other) {
 		if (other.tag == "Player")
 		{
@@ -51,16 +59,12 @@ public class SteeringWheel : MonoBehaviour {
 
 			if (seated && sail.GetComponent<SailController>().sailUp) {
 
-				movement = new Vector3 (Input.GetAxis ("Horizontal"), 0f, Input.GetAxis ("Vertical"));
-				movement = transform.TransformDirection (movement);
-
 				forwardMovement = new Vector3 (0f, 0f, Input.GetAxis("Vertical"));
 				rotation = new Vector3 (0f, Input.GetAxis ("Horizontal"), 0f);
 
 				GetComponentInParent<Rigidbody> ().AddRelativeForce (forwardMovement * speed);
 				GetComponentInParent<Rigidbody> ().AddTorque(rotation * rotationSpeed);
 
-				Debug.Log (GetComponentInParent<Rigidbody> ().angularVelocity);
 			}
 		}
 	}
