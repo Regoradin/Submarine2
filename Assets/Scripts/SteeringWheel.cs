@@ -24,14 +24,6 @@ public class SteeringWheel : MonoBehaviour {
 
 	}
 
-
-	//REMOVE UPDATE() AFTER TESTING
-	void Update(){
-
-		Debug.Log (GetComponentInParent<Rigidbody> ().velocity);
-
-	}
-
 	void OnTriggerStay (Collider other) {
 		if (other.tag == "Player")
 		{
@@ -52,7 +44,7 @@ public class SteeringWheel : MonoBehaviour {
 					seated = true;
 					other.transform.SetParent (transform);
 					oldPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
-					other.transform.position = transform.position - new Vector3 (0f, 0f, 0.1f);
+					other.transform.position = transform.position - new Vector3 (0f, 0f, 2f);
 					return;
 				}
 			}
@@ -64,6 +56,8 @@ public class SteeringWheel : MonoBehaviour {
 
 				GetComponentInParent<Rigidbody> ().AddRelativeForce (forwardMovement * speed);
 				GetComponentInParent<Rigidbody> ().AddTorque(rotation * rotationSpeed);
+
+				Debug.Log (forwardMovement);
 
 			}
 		}

@@ -32,8 +32,4 @@ public class SailController : MonoBehaviour {
 			}
 		}
 	}
-	
-	void Update () {
-
-	}
 }
