@@ -44,9 +44,9 @@ public class SteeringWheel : MonoBehaviour {
 	{
 		if(playerInRange){
 			if (Input.GetButtonDown("Submit")) {
-				if (seated) {
-					Debug.Log ("buttOnDown");
+				Debug.Log ("buttonDown");
 
+				if (seated) {
 					seated = false;
 					player.transform.localPosition = oldPosition;
 					player.transform.SetParent (null);
@@ -54,7 +54,8 @@ public class SteeringWheel : MonoBehaviour {
 					player.GetComponent<CharacterController> ().enabled = true;
 
 					return;
-				} else if (!seated) {
+				} 
+				else if (!seated) {
 					seated = true;
 					player.transform.SetParent (transform);
 					oldPosition = new Vector3 (player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
@@ -81,9 +82,6 @@ public class SteeringWheel : MonoBehaviour {
 			GetComponentInParent<Rigidbody> ().AddRelativeForce (forwardMovement * speed);
 			GetComponentInParent<Rigidbody> ().AddRelativeTorque(rotation * rotationSpeed);
 
-			//Debug.Log ("forwardMovement: " + forwardMovement);
-			Debug.Log ("velocity: " + GetComponentInParent<Rigidbody> ().velocity);
-
 		}
 
 	}
@@ -98,3 +96,4 @@ public class SteeringWheel : MonoBehaviour {
 	}
 
 }
+
