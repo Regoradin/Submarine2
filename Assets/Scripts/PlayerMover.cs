@@ -19,16 +19,17 @@ public class PlayerMover : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (!chair.GetComponent<SteeringWheel> ().seated) {
+		if (!chair.GetComponent<SteeringWheel> ().seated) 
+		{
 			movement = new Vector3 (Input.GetAxis ("Horizontal"), 0.0f, Input.GetAxis ("Vertical"));
 			movement = transform.GetChild (1).TransformDirection (movement);
 			movement.y = 0.0f;
+
+			movement += Vector3.down;
 		}
-
-
-		movement += Vector3.down;
-	
-		controller.Move (movement * speed);
+		//If this if{} is not there, then it still works but gives a warning every frame due to inactive charcontroller when seated. 
+		if (controller.enabled)
+			controller.Move (movement * speed);
 
 	}
 }
