@@ -16,8 +16,8 @@ public class Floating : MonoBehaviour {
 
 		float waterlevel = transform.position.y + (transform.localScale.y / 2);
 		volume = volume * (other.bounds.extents.y / waterlevel);
-		Debug.Log (other.bounds.extents);
-		Debug.Log ("waterlevel: " + waterlevel);
+		//Debug.Log (other.bounds.extents);
+		//Debug.Log ("waterlevel: " + waterlevel);
 
 		if (other.attachedRigidbody)
 			other.attachedRigidbody.AddForce (volume * -Physics.gravity * waterDensity);

@@ -43,8 +43,11 @@ public class SteeringWheel : MonoBehaviour {
 				{
 					seated = true;
 					other.transform.SetParent (transform);
-					oldPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
-					other.transform.position = transform.position - new Vector3 (0f, 0f, 2f);
+					oldPosition = new Vector3 (other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+					other.transform.localPosition = transform.localPosition - new Vector3 (0f, 0f, 2f);
+
+					Debug.Log ("other.transform.localPosition: " + other.transform.localPosition);
+					Debug.Log("transform.localPosition: " + transform.localPosition);
 					return;
 				}
 			}
@@ -55,10 +58,10 @@ public class SteeringWheel : MonoBehaviour {
 				rotation = new Vector3 (0f, Input.GetAxis ("Horizontal"), 0f);
 
 				GetComponentInParent<Rigidbody> ().AddRelativeForce (forwardMovement * speed);
-				GetComponentInParent<Rigidbody> ().AddTorque(rotation * rotationSpeed);
+				GetComponentInParent<Rigidbody> ().AddRelativeTorque(rotation * rotationSpeed);
 
-				Debug.Log ("forwardMovement: " + forwardMovement);
-				Debug.Log ("velocity: " + GetComponentInParent<Rigidbody> ().velocity);
+				//Debug.Log ("forwardMovement: " + forwardMovement);
+				//Debug.Log ("velocity: " + GetComponentInParent<Rigidbody> ().velocity);
 
 			}
 		}

@@ -3,19 +3,19 @@ using System.Collections;
 
 public class BoatManager : MonoBehaviour {
 
+	private Rigidbody rigidBody;
+
 	// Use this for initialization
 	void Start () {
-		Rigidbody rigidBody = GetComponent<Rigidbody> ();
+		rigidBody = GetComponent<Rigidbody> ();
 
-
-		//rigidBody.centerOfMass = Vector3.zero;
-		//Debug.Log (rigidBody.centerOfMass);
+		Debug.Log ("Center of Mass: " + rigidBody.centerOfMass);
 
 	}
 
 	void Update(){
 
-		Debug.Log (GetComponent<Rigidbody>().angularVelocity);
+		//Debug.Log (rigidBody.velocity.magnitude);
 
 	}
 }
