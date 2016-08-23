@@ -5,38 +5,50 @@ public class Floating : MonoBehaviour {
 
 	public float waviness;
 	private Vector3 difference;
-	public float waterDensity;
+
 	public float waterDrag;
 	private float oldDrag;
+
+	public float shipWaviness;
+	public float waterDensity;
 
 
 	// Use this for initialization
 	void OnTriggerStay (Collider other) {
-		float volume = other.bounds.size.x * other.bounds.size.y * other.bounds.size.z;
+		if (!other.isTrigger && other.tag == "Boat") {
+			float bottomSurfaceArea = other.bounds.size.x * other.bounds.size.y;
+			float waterLevel = transform.position.y + GetComponent<Collider> ().bounds.extents.y;
+		
+			float optimalDepth = ((-other.attachedRigidbody.mass) / (waterDensity * bottomSurfaceArea) + waterLevel);
 
-		float waterlevel = transform.position.y + (transform.localScale.y / 2);
-		volume = volume * (other.bounds.extents.y / waterlevel);
-		//Debug.Log (other.bounds.extents);
-		//Debug.Log ("waterlevel: " + waterlevel);
+			other.transform.position = new Vector3(other.transform.position.x, Mathf.Lerp (other.transform.position.y, optimalDepth, shipWaviness), other.transform.position.y);
 
-		if (other.attachedRigidbody)
-			other.attachedRigidbody.AddForce (volume * -Physics.gravity * waterDensity);
+			//Debug.Log ("waterLevel: " + waterLevel);
+			//Debug.Log ("OptimalDepth: " + optimalDepth);
+			//Debug.Log ("Lerp: " + Mathf.Lerp (other.transform.position.y, optimalDepth, shipWaviness));
+
+			//if (other.attachedRigidbody)
+			//	other.attachedRigidbody.AddForce (volume * -Physics.gravity * waterDensity);
+			//Debug.Log (volume * -Physics.gravity * waterDensity);
+		}
 	
 	}
 
 	void OnTriggerEnter (Collider other){
-
-		if (other.attachedRigidbody) {
-			oldDrag = other.attachedRigidbody.drag;
-			other.attachedRigidbody.drag = waterDrag;
+		if (other.tag == "Boat") {
+			if (other.attachedRigidbody) {
+				oldDrag = other.attachedRigidbody.drag;
+				other.attachedRigidbody.drag = waterDrag;
+			}
 		}
 
 	}
 
 	void OnTriggerExit (Collider other){
-
-		if (other.attachedRigidbody)
-			other.attachedRigidbody.drag = oldDrag;
+		if (other.tag == "Boat") {
+			if (other.attachedRigidbody)
+				other.attachedRigidbody.drag = oldDrag;
+		}
 
 	}
 
