@@ -15,27 +15,20 @@ public class Floating : MonoBehaviour {
 
 	// Use this for initialization
 	void OnTriggerStay (Collider other) {
-		if (!other.isTrigger && other.tag == "Boat") {
-			float bottomSurfaceArea = other.bounds.size.x * other.bounds.size.y;
+		if (!other.isTrigger && other.tag == "Floatable") {
+			float bottomSurfaceArea = other.bounds.size.x * other.bounds.size.z;
 			float waterLevel = transform.position.y + GetComponent<Collider> ().bounds.extents.y;
 		
 			float optimalDepth = ((-other.attachedRigidbody.mass) / (waterDensity * bottomSurfaceArea) + waterLevel);
 
-			other.transform.position = new Vector3(other.transform.position.x, Mathf.Lerp (other.transform.position.y, optimalDepth, shipWaviness), other.transform.position.y);
+			other.transform.position = new Vector3(other.transform.position.x, Mathf.Lerp (other.transform.position.y, optimalDepth, shipWaviness), other.transform.position.z);
 
-			//Debug.Log ("waterLevel: " + waterLevel);
-			//Debug.Log ("OptimalDepth: " + optimalDepth);
-			//Debug.Log ("Lerp: " + Mathf.Lerp (other.transform.position.y, optimalDepth, shipWaviness));
-
-			//if (other.attachedRigidbody)
-			//	other.attachedRigidbody.AddForce (volume * -Physics.gravity * waterDensity);
-			//Debug.Log (volume * -Physics.gravity * waterDensity);
 		}
 	
 	}
 
 	void OnTriggerEnter (Collider other){
-		if (other.tag == "Boat") {
+		if (other.tag == "Floatable") {
 			if (other.attachedRigidbody) {
 				oldDrag = other.attachedRigidbody.drag;
 				other.attachedRigidbody.drag = waterDrag;
@@ -45,7 +38,7 @@ public class Floating : MonoBehaviour {
 	}
 
 	void OnTriggerExit (Collider other){
-		if (other.tag == "Boat") {
+		if (other.tag == "Floatable") {
 			if (other.attachedRigidbody)
 				other.attachedRigidbody.drag = oldDrag;
 		}
