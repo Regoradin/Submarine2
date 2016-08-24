@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Floating : MonoBehaviour {
 
-	public float waviness;
+	public float waveFrequency;
+	public float waveHeight;
+	public float waveSize;
 	private Vector3 difference;
 
 	public float waterDrag;
@@ -49,7 +51,8 @@ public class Floating : MonoBehaviour {
 	void Update () {
 
 		//+(transform.position.z/10) is a placeholder to offset the wave timing until some procedural wave generator is created
-		difference = (Mathf.Sin (Mathf.Repeat (Time.time + (transform.position.z/3), 2 * Mathf.PI ) * waviness) * 2 - transform.position.y) * Vector3.up ;
+		difference = (Mathf.Sin (Mathf.Repeat (Time.time + (transform.localPosition.z/waveSize), 2 * Mathf.PI ) * waveFrequency) * waveHeight - transform.position.y) * Vector3.up ;
+
 
 		transform.Translate (difference);
 	}

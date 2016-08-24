@@ -5,12 +5,12 @@ public class BodyRotator : MonoBehaviour {
 
 	public HeadRotator headRotator;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start(){
+
+		headRotator = GameObject.Find ("Head").GetComponent<HeadRotator> ();
+
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 		transform.Rotate (0.0f, Input.GetAxis("Mouse X") * headRotator.looksensitivity, 0.0f, Space.World);
