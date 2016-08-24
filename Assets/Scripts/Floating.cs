@@ -48,7 +48,8 @@ public class Floating : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		difference = (Mathf.Sin (Mathf.Repeat (Time.time, 2 * Mathf.PI) * waviness) - transform.position.y) * Vector3.up;
+		//+(transform.position.z/10) is a placeholder to offset the wave timing until some procedural wave generator is created
+		difference = (Mathf.Sin (Mathf.Repeat (Time.time + (transform.position.z/3), 2 * Mathf.PI ) * waviness) * 2 - transform.position.y) * Vector3.up ;
 
 		transform.Translate (difference);
 	}
