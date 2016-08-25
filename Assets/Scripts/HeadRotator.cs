@@ -27,8 +27,6 @@ public class HeadRotator : MonoBehaviour {
 
 		yRotation = Mathf.Clamp (a, minY, maxY);
 
-		Debug.Log("Old: " + a);
-		Debug.Log ("New: " + yRotation);
 		transform.eulerAngles = new Vector3 (yRotation, transform.eulerAngles.y, 0f);
 	}
 }

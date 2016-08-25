@@ -15,18 +15,34 @@ public class Floating : MonoBehaviour {
 	public float waterDensity;
 
 
-	// Use this for initialization
-	void OnTriggerStay (Collider other) {
-		if (!other.isTrigger && other.tag == "Floatable") {
-			float bottomSurfaceArea = other.bounds.size.x * other.bounds.size.z;
-			float waterLevel = transform.position.y + GetComponent<Collider> ().bounds.extents.y;
-		
-			float optimalDepth = ((-other.attachedRigidbody.mass) / (waterDensity * bottomSurfaceArea) + waterLevel);
+	void OnTriggerStay (Collider other){
+		if (other.tag == "Floatable" && other.attachedRigidbody) {
 
-			other.transform.position = new Vector3(other.transform.position.x, Mathf.Lerp (other.transform.position.y, optimalDepth, shipWaviness), other.transform.position.z);
+			int sunkPoints = 0;
+			int totalPoints = 0;
+			float volume = GetComponent<Collider> ().bounds.size.x * GetComponent<Collider> ().bounds.size.y * GetComponent<Collider> ().bounds.size.z;
 
+			//loops through 1000 test points in a 10x10x10 grid throughout the box and creates a Vector3 defining each point as a multiple of the full extents of the box.
+			for (float x = -.5f; x <= .5f; x = x + .1f) {
+				for (float y = -.5f; y <= .5f; y = y + .1f) {
+					for (float z = -.5f; z <= .5f; z = z + .1f) {
+
+						//testPoint may have to be defined by (other.bounds.size.x * x, other.bounds.size.y * y, other.bounds.size.z * z) for ships that are larger than 1 unscaled, although I may just use a scaled up cube collider to handle bouyancy
+						Vector3 testPoint = new Vector3 (x, y, z);
+						float waterLevel = transform.position.y + GetComponent<Collider> ().bounds.extents.y;
+
+						if (other.transform.TransformPoint (testPoint).y < waterLevel)
+							sunkPoints += 1;
+						totalPoints += 1;
+					}
+				}
+			}
+
+			//Debug.Log ("Sunk: " + sunkPoints);
+			//Debug.Log ("Total: " + totalPoints);
+
+			other.attachedRigidbody.AddForceAtPosition (((sunkPoints / totalPoints) * volume * waterDensity * -Physics.gravity), other.transform.position);
 		}
-	
 	}
 
 	void OnTriggerEnter (Collider other){

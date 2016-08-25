@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 15
   waveSize: 80
   waterDrag: 1
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 11
   waveSize: 120
   waterDrag: 1
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 6
   waveSize: 170
   waterDrag: 1
@@ -1170,7 +1170,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311845539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 39.9, z: 0}
+  m_LocalPosition: {x: -16.7, y: 19.8, z: 52.52}
   m_LocalScale: {x: 10, y: 2, z: 15}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1187,7 +1187,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311845539}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 2000
   m_Drag: 0.5
   m_AngularDrag: 0.5
   m_UseGravity: 1
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 8
   waveSize: 150
   waterDrag: 1
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 14
   waveSize: 90
   waterDrag: 1
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 17
   waveSize: 60
   waterDrag: 1
@@ -2710,7 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 16
   waveSize: 70
   waterDrag: 1
@@ -2851,7 +2851,7 @@ GameObject:
   - 33: {fileID: 1444143195}
   - 23: {fileID: 1444143193}
   m_Layer: 0
-  m_Name: Shader Cover Thingamajig
+  m_Name: Shader Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 13
   waveSize: 100
   waterDrag: 1
@@ -3182,7 +3182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 3
   waveSize: 200
   waterDrag: 1
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 12
   waveSize: 110
   waterDrag: 1
@@ -3402,7 +3402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 5
   waveSize: 180
   waterDrag: 1
@@ -3714,7 +3714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 9
   waveSize: 140
   waterDrag: 1
@@ -3898,7 +3898,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 6.06, z: 7}
+  m_Size: {x: 7, y: 3, z: 7}
   m_Center: {x: 0, y: 0, z: 0.00000047683716}
 --- !u!1 &1781289665
 GameObject:
@@ -3931,7 +3931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 10
   waveSize: 130
   waterDrag: 1
@@ -4255,7 +4255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 4
   waveSize: 190
   waterDrag: 1
@@ -4566,7 +4566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ab4368169aff447b7292a6481670a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFrequency: 3
+  waveFrequency: 1
   waveHeight: 7
   waveSize: 160
   waterDrag: 1
@@ -4751,7 +4751,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120515227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 46.6, z: 1.7300001}
+  m_LocalPosition: {x: 29.8, y: 46.6, z: 1.7300001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
