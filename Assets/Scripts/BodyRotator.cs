@@ -13,7 +13,7 @@ public class BodyRotator : MonoBehaviour {
 
 	void Update () {
 	
-		transform.Rotate (0.0f, Input.GetAxis("Mouse X") * headRotator.looksensitivity, 0.0f, Space.World);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, headRotator.transform.eulerAngles.y, transform.eulerAngles.z);
 
 	}
 }
