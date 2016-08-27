@@ -39,9 +39,6 @@ public class Float : MonoBehaviour {
 				}
 			}
 
-			Debug.Log (sunkPoints);
-			Debug.Log ("Volume: " + volume);
-
 			rigidBody.AddForceAtPosition (((sunkPoints / totalPoints) * volume * waterDensity * -Physics.gravity), transform.position);
 		}
 	}
