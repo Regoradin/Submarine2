@@ -47,40 +47,43 @@ public class OceanManager : MonoBehaviour {
 			shiftX += 1;
 			for (int z = -initialOceanZ; z <= initialOceanZ; z++) {
 
-				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX + initialOceanX) * wave.transform.localScale.x, -wave.transform.localScale.y, (shiftZ + initialOceanZ) + z * wave.transform.localScale.z), Quaternion.identity);
-
+				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX + initialOceanX) * wave.transform.localScale.x, -wave.transform.localScale.y, ((shiftZ) * wave.transform.localScale.z) + (z * wave.transform.localScale.z)), Quaternion.identity);
+				Wave.transform.parent = transform;
 			}
 			oldPosition.x = player.transform.position.x;
 		}
+
 		if (-differenceX > wave.transform.localScale.x) {
 			shiftX -= 1;
 			for (int z = -initialOceanZ; z <= initialOceanZ; z++) {
 
-				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX - initialOceanX) * wave.transform.localScale.x, -wave.transform.localScale.y, (shiftZ + initialOceanZ) - z * wave.transform.localScale.z), Quaternion.identity);
-
+				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (-(initialOceanX - shiftX) * wave.transform.localScale.x, -wave.transform.localScale.y, ((shiftZ) * wave.transform.localScale.z) + (z * wave.transform.localScale.z)), Quaternion.identity);
+				Wave.transform.parent = transform;
 			}
 			oldPosition.x = player.transform.position.x;
 		}
 
+
 		if (differenceZ > wave.transform.localScale.z) {
 			shiftZ += 1;
 			for (int x = -initialOceanX; x <= initialOceanX; x++) {
-				Debug.Log (x);
 
-				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX + initialOceanX) + x *  wave.transform.localScale.x, -wave.transform.localScale.y, (shiftZ + initialOceanZ) * wave.transform.localScale.z), Quaternion.identity);
-
+				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, (shiftZ + initialOceanZ) * wave.transform.localScale.z), Quaternion.identity);
+				Wave.transform.parent = transform;
 			}
 			oldPosition.z = player.transform.position.z;
 		}
+
 		if (-differenceZ > wave.transform.localScale.z) {
 			shiftZ -= 1;
 			for (int x = -initialOceanX; x <= initialOceanX; x++) {
 
-				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX - initialOceanX) - x  * wave.transform.localScale.x, -wave.transform.localScale.y, (shiftZ - initialOceanZ) * wave.transform.localScale.z), Quaternion.identity);
-
+				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, -(initialOceanZ - shiftZ) * wave.transform.localScale.z), Quaternion.identity);
+				Wave.transform.parent = transform;
 			}
 			oldPosition.z = player.transform.position.z;
 		}
-			
+
+
 	}
 }
