@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 145748, guid: b45c199b1aa55064b80323ffe50e28f9, type: 2}
-  initialOceanX: 1
+  initialOceanX: 10
   initialOceanZ: 30
   shiftX: 0
   shiftZ: 0

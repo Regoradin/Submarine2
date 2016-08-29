@@ -8,6 +8,9 @@ public class Water : MonoBehaviour {
 	public float waveSize;
 	private Vector3 difference;
 
+	private GameObject player;
+	private OceanManager oceanManager;
+
 	public float waterDrag;
 	private float oldDrag;
 
@@ -29,9 +32,17 @@ public class Water : MonoBehaviour {
 
 	}
 
+	void Start(){
+		player = GameObject.Find ("Player");
+		oceanManager = GetComponentInParent<OceanManager> ();
+	}
+
 	void Update () {
 
-		//+(transform.position.z/10) is a placeholder to offset the wave timing until some procedural wave generator is created
+		if (Mathf.Abs (player.transform.position.x - transform.position.x) > (oceanManager.initialOceanX + 1) * transform.localScale.x  || Mathf.Abs (player.transform.position.z - transform.position.z) > (oceanManager.initialOceanZ + 1) * transform.localScale.z)
+			Destroy (gameObject);
+
+		//+(transform.position.z/waveSize) is a placeholder to offset the wave timing until some procedural wave generator is created
 		difference = (Mathf.Sin (Mathf.Repeat (Time.time + (transform.localPosition.z/waveSize), 2 * Mathf.PI ) * waveFrequency) * waveHeight - transform.position.y) * Vector3.up ;
 
 
