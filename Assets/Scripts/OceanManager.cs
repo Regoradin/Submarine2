@@ -35,6 +35,15 @@ public class OceanManager : MonoBehaviour {
 
 	}
 
+	//Changes settings on a wave, doesn't modify frequency because it is basically the same thing as size for now
+	void setWaveProperties (GameObject Wave, float height, float size){
+
+		Water water = Wave.GetComponent<Water>();
+
+		water.waveHeight = height;
+		water.waveSize = size;
+
+	}
 
 	void Update(){
 
@@ -49,6 +58,9 @@ public class OceanManager : MonoBehaviour {
 
 				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX + initialOceanX) * wave.transform.localScale.x, -wave.transform.localScale.y, ((shiftZ) * wave.transform.localScale.z) + (z * wave.transform.localScale.z)), Quaternion.identity);
 				Wave.transform.parent = transform;
+
+
+				setWaveProperties (Wave, shiftX, shiftX / 1.1f);
 			}
 			oldPosition.x = player.transform.position.x;
 		}
@@ -57,8 +69,9 @@ public class OceanManager : MonoBehaviour {
 			shiftX -= 1;
 			for (int z = -initialOceanZ; z <= initialOceanZ; z++) {
 
-				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (-(initialOceanX - shiftX) * wave.transform.localScale.x, -wave.transform.localScale.y, ((shiftZ) * wave.transform.localScale.z) + (z * wave.transform.localScale.z)), Quaternion.identity);
+				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((-initialOceanX + shiftX) * wave.transform.localScale.x, -wave.transform.localScale.y, ((shiftZ) * wave.transform.localScale.z) + (z * wave.transform.localScale.z)), Quaternion.identity);
 				Wave.transform.parent = transform;
+
 			}
 			oldPosition.x = player.transform.position.x;
 		}
@@ -70,6 +83,9 @@ public class OceanManager : MonoBehaviour {
 
 				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, (shiftZ + initialOceanZ) * wave.transform.localScale.z), Quaternion.identity);
 				Wave.transform.parent = transform;
+
+				setWaveProperties (Wave, shiftZ, shiftZ / 1.1f);
+
 			}
 			oldPosition.z = player.transform.position.z;
 		}
@@ -78,8 +94,9 @@ public class OceanManager : MonoBehaviour {
 			shiftZ -= 1;
 			for (int x = -initialOceanX; x <= initialOceanX; x++) {
 
-				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, -(initialOceanZ - shiftZ) * wave.transform.localScale.z), Quaternion.identity);
+				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, (-initialOceanZ + shiftZ) * wave.transform.localScale.z), Quaternion.identity);
 				Wave.transform.parent = transform;
+
 			}
 			oldPosition.z = player.transform.position.z;
 		}
