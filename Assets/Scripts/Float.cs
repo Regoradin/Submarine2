@@ -18,9 +18,8 @@ public class Float : MonoBehaviour {
 	void OnTriggerStay (Collider other){
 		if (other.tag == "Water") {
 
-
-			int sunkPoints = 0;
-			int totalPoints = 0;
+			float sunkPoints = 0;
+			float totalPoints = 0;
 			float volume = transform.lossyScale.x * transform.lossyScale.y * transform.lossyScale.z;
 
 			//loops through 1331 test points in a 11x11x11 grid throughout the box and creates a Vector3 defining each point as a multiple of the full extents of the box.
@@ -40,6 +39,7 @@ public class Float : MonoBehaviour {
 			}
 
 			rigidBody.AddForceAtPosition (((sunkPoints / totalPoints) * volume * waterDensity * -Physics.gravity), transform.position);
+
 		}
 	}
 }

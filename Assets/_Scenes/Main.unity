@@ -222,7 +222,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 45.426, y: -27.254099, z: 3.7082999}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &130156533
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311845539}
   serializedVersion: 2
-  m_Mass: 800
+  m_Mass: 15000
   m_Drag: 0.5
   m_AngularDrag: 0.5
   m_UseGravity: 1
@@ -767,8 +767,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1007810589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.72, z: 0}
-  m_LocalScale: {x: 1.7183393, y: 5.0365076, z: 2.0426538}
+  m_LocalPosition: {x: 0, y: -0.81, z: 0}
+  m_LocalScale: {x: 1.7183393, y: 7.8694315, z: 2.3033478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 311845544}
@@ -975,12 +975,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1077322029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -13.8, z: 0}
+  m_LocalPosition: {x: 0, y: -13.799999, z: 0}
   m_LocalScale: {x: 546.1977, y: 10, z: 307.81216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1269354748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,8 +1331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat: {r: 0.56078434, g: 0.30588236, b: 0.03529412, a: 1}
   seated: 0
-  speed: 30000
-  rotationSpeed: 30000
+  speed: 90000
+  rotationSpeed: 90000
 --- !u!33 &1768942386
 MeshFilter:
   m_ObjectHideFlags: 0
