@@ -36,12 +36,15 @@ public class OceanManager : MonoBehaviour {
 	}
 
 	//Changes settings on a wave, doesn't modify frequency because it is basically the same thing as size for now
-	void SetWaveProperties (GameObject Wave, float height, float size){
+	void SetWaveProperties (GameObject Wave, float height, float size, float angle){
 
 		Water water = Wave.GetComponent<Water>();
 
 		water.waveHeight = height;
 		water.waveSize = size;
+
+		angle = angle * Mathf.Deg2Rad;
+		water.waveAngle = angle;
 
 	}
 

@@ -8,6 +8,8 @@ public class Water : MonoBehaviour {
 	public float waveSize;
 	private Vector3 difference;
 
+	public float waveAngle;
+
 	private GameObject player;
 	private OceanManager oceanManager;
 
@@ -36,6 +38,8 @@ public class Water : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		oceanManager = GetComponentInParent<OceanManager> ();
 
+		waveAngle = waveAngle * Mathf.Deg2Rad;
+
 		transform.name = "Wave x: " + (transform.position.x/transform.localScale.x).ToString () +" z: " + (transform.position.z/transform.localScale.z).ToString();
 	}
 
@@ -45,8 +49,7 @@ public class Water : MonoBehaviour {
 			Destroy (gameObject);
 
 		//+(transform.position.z/waveSize) is a placeholder to offset the wave timing until some procedural wave generator is created
-		difference = (Mathf.Sin (Mathf.Repeat (Time.time + (transform.localPosition.z/waveSize), 2 * Mathf.PI ) * waveFrequency) * waveHeight - transform.position.y) * Vector3.up ;
-
+		difference = (Mathf.Sin (Mathf.Repeat (Time.time + ((Mathf.Cos(waveAngle) * transform.position.z + Mathf.Sin(waveAngle) * transform.position.x)/waveSize), 2 * Mathf.PI ) * waveFrequency) * waveHeight - transform.position.y) * Vector3.up ;
 
 		transform.Translate (difference);
 	}
