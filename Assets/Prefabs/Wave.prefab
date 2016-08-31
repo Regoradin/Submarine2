@@ -91,7 +91,7 @@ MonoBehaviour:
   waveFrequency: 1
   waveHeight: 5
   waveSize: 20
-  waveAngle: 20
+  waveAngle: 0
   waterDrag: 1
 --- !u!1001 &100100000
 Prefab:

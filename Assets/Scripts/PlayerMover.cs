@@ -26,6 +26,7 @@ public class PlayerMover : MonoBehaviour {
 			movement.y = 0.0f;
 
 			movement += Vector3.down;
+
 		}
 		//If this if{} is not there, then it still works but gives a warning every frame due to inactive charcontroller when seated. 
 		if (controller.enabled)
