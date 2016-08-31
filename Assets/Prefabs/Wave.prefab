@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 145748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 20.28, z: 10}
+  m_LocalScale: {x: 10, y: 20.28, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   waveFrequency: 1
   waveHeight: 3
   waveSize: 15
+  windAngle: 0
   waterDrag: 1
 --- !u!1001 &100100000
 Prefab:

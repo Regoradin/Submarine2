@@ -35,6 +35,8 @@ public class Water : MonoBehaviour {
 	void Start(){
 		player = GameObject.Find ("Player");
 		oceanManager = GetComponentInParent<OceanManager> ();
+
+		transform.name = "Wave x: " + (transform.position.x/transform.localScale.x).ToString () +" z: " + (transform.position.z/transform.localScale.z).ToString();
 	}
 
 	void Update () {

@@ -36,13 +36,21 @@ public class OceanManager : MonoBehaviour {
 	}
 
 	//Changes settings on a wave, doesn't modify frequency because it is basically the same thing as size for now
-	void setWaveProperties (GameObject Wave, float height, float size){
+	void SetWaveProperties (GameObject Wave, float height, float size){
 
 		Water water = Wave.GetComponent<Water>();
 
 		water.waveHeight = height;
 		water.waveSize = size;
 
+	}
+
+	GameObject FindWave(int x, int z){
+
+		GameObject foundWave = GameObject.Find("Wave x: " + (transform.position.x/transform.localScale.x).ToString () +" z: " + (transform.position.z/transform.localScale.z).ToString());
+		if (foundWave == null)
+			Debug.Log ("Can't find Wave x: " + (transform.position.x / transform.localScale.x).ToString () + " z: " + (transform.position.z / transform.localScale.z).ToString ()); 
+		return foundWave;
 	}
 
 	void Update(){
@@ -59,8 +67,6 @@ public class OceanManager : MonoBehaviour {
 				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 ((shiftX + initialOceanX) * wave.transform.localScale.x, -wave.transform.localScale.y, ((shiftZ) * wave.transform.localScale.z) + (z * wave.transform.localScale.z)), Quaternion.identity);
 				Wave.transform.parent = transform;
 
-
-				setWaveProperties (Wave, shiftX, shiftX / 1.1f);
 			}
 			oldPosition.x = player.transform.position.x;
 		}
@@ -83,8 +89,6 @@ public class OceanManager : MonoBehaviour {
 
 				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, (shiftZ + initialOceanZ) * wave.transform.localScale.z), Quaternion.identity);
 				Wave.transform.parent = transform;
-
-				setWaveProperties (Wave, shiftZ, shiftZ / 1.1f);
 
 			}
 			oldPosition.z = player.transform.position.z;
