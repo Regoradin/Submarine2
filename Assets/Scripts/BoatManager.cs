@@ -10,8 +10,6 @@ public class BoatManager : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody> ();
 
 		rigidBody.centerOfMass = new Vector3 (0, -10, 0);
-		Debug.Log ("Center of Mass: " + rigidBody.centerOfMass);
-
 	}
 
 	void Update(){

@@ -11,8 +11,6 @@ public class Float : MonoBehaviour {
 
 		rigidBody = GetComponentInParent<Rigidbody>();
 
-		Debug.Log (rigidBody.name);
-
 	}
 
 	void OnTriggerStay (Collider other){

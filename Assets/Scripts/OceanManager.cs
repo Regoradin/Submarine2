@@ -12,6 +12,8 @@ public class OceanManager : MonoBehaviour {
 	public int shiftX;
 	public int shiftZ;
 
+	public GameObject BigWave;
+
 	private Vector3 oldPosition;
 	//private float differenceX;
 	//private float differenceZ;
@@ -30,18 +32,21 @@ public class OceanManager : MonoBehaviour {
 		shiftX = 0;
 		shiftZ = 0;
 
+		MakeBigWave(new Vector3 (4,0,2), 6, 20, 1f, 40f, 2f);
+
 		player = GameObject.Find ("Player");
 		oldPosition = player.transform.position;
 
 	}
 
 	//Changes settings on a wave, doesn't modify frequency because it is basically the same thing as size for now
-	void SetWaveProperties (GameObject Wave, float height, float size, float angle){
+	public void SetWaveProperties (GameObject Wave, float height, float size, float angle, float speed){
 
 		Water water = Wave.GetComponent<Water>();
 
 		water.waveHeight = height;
 		water.waveSize = size;
+		water.waveSpeed = speed;
 
 		angle = angle * Mathf.Deg2Rad;
 		water.waveAngle = angle;
@@ -50,10 +55,39 @@ public class OceanManager : MonoBehaviour {
 
 	GameObject FindWave(int x, int z){
 
-		GameObject foundWave = GameObject.Find("Wave x: " + (transform.position.x/transform.localScale.x).ToString () +" z: " + (transform.position.z/transform.localScale.z).ToString());
+		GameObject foundWave = GameObject.Find("Wave x: " + (wave.transform.position.x/wave.transform.localScale.x).ToString () +" z: " + (wave.transform.position.z/wave.transform.localScale.z).ToString());
 		if (foundWave == null)
-			Debug.Log ("Can't find Wave x: " + (transform.position.x / transform.localScale.x).ToString () + " z: " + (transform.position.z / transform.localScale.z).ToString ()); 
+			Debug.Log ("Can't find Wave x: " + (wave.transform.position.x / wave.transform.localScale.x).ToString () + " z: " + (wave.transform.position.z / wave.transform.localScale.z).ToString ()); 
 		return foundWave;
+	}
+
+	public void MakeBigWave (Vector3 center, int length, int width, float height, float angle, float speed){
+
+		Quaternion angle_quat = (Quaternion) Quaternion.Euler (0f, angle, 0f);
+
+		GameObject bigWave = (GameObject)Instantiate (BigWave, center, angle_quat);
+
+		bigWave.transform.localScale = new Vector3 (width, 1f, length);
+
+
+//		var random_wave = new GameObject ();
+//		random_wave.transform.position = new Vector3(center.x, 0, center.y);
+//		random_wave.transform.eulerAngles = new Vector3(0, angle, 0);
+//
+//		angle = angle * Mathf.Deg2Rad;
+//
+//		//creates integer side lengths to a hypotenuse of the desired wave angle
+//		float yFactor = (1 / Mathf.Sin (angle));
+//		float xFactor = (1 / Mathf.Cos (angle));
+//
+//
+//		int xStep = Mathf.RoundToInt (Mathf.Cos (angle) * xFactor * yFactor);
+//		int yStep = Mathf.RoundToInt (Mathf.Sin (angle) * yFactor * xFactor);
+//
+//		center = Vector2.Scale (center, new Vector2(wave.transform.localScale.x, wave.transform.localScale.z));
+
+
+
 	}
 
 	void Update(){
