@@ -32,10 +32,10 @@ public class OceanManager : MonoBehaviour {
 		shiftX = 0;
 		shiftZ = 0;
 
-		MakeBigWave(new Vector3 (4,0,2), 6, 20, 20f, 40f, 2f);
-
 		player = GameObject.Find ("Player");
 		oldPosition = player.transform.position;
+
+		MakeBigWave(new Vector3(0f, 0f, 0f), 20f, 40f, 20f, 4f, 10f, 10f);
 
 	}
 
@@ -43,10 +43,10 @@ public class OceanManager : MonoBehaviour {
 	/// <summary>
 	/// Changes the settings on an individual wave.
 	/// </summary>
-	/// <param name="Wave">The wave getting altered</param>
+	/// <param name="Wave">The wave gameObject getting altered</param>
 	/// <param name="height">The hight of the sin wave</param>
 	/// <param name="size">The wavelength of the sin wave</param>
-	/// <param name="angle">The angle across the x-z plane that the sin wave is going</param>
+	/// <param name="angle">The angle across the x-z plane that the sin wave is going in degrees, 0 degrees is z+</param>
 	/// <param name="speed">How fast the wave goes</param>
 	public void SetWaveProperties (GameObject Wave, float height, float size, float angle, float speed){
 
@@ -69,13 +69,17 @@ public class OceanManager : MonoBehaviour {
 		return foundWave;
 	}
 
-	public void MakeBigWave (Vector3 center, int length, int width, float height, float angle, float speed){
+	public void MakeBigWave (Vector3 center, float angle, float length, float width, float height, float size, float speed)
+	{
+		Quaternion rotation = Quaternion.identity;
+		rotation.eulerAngles = new Vector3(0f, angle, 0f);
 
-		Quaternion angle_quat = (Quaternion) Quaternion.Euler (0f, angle, 0f);
+		GameObject bigWave = (GameObject) Instantiate(BigWave, center, rotation);
 
-		GameObject bigWave = (GameObject)Instantiate (BigWave, center, angle_quat);
+		bigWave.transform.localScale = new Vector3(width, wave.transform.localScale.y * height, length);
 
-		bigWave.transform.localScale = new Vector3 (width, height, length);
+		BigWave bigwave = bigWave.GetComponent<BigWave>();
+		bigwave.SetBigWaveProperties(height, size, speed, angle);
 
 	}
 
@@ -126,7 +130,7 @@ public class OceanManager : MonoBehaviour {
 
 				GameObject Wave = (GameObject)Instantiate (wave, new Vector3 (((shiftX) * wave.transform.localScale.x) + (x * wave.transform.localScale.x), -wave.transform.localScale.y, (-initialOceanZ + shiftZ) * wave.transform.localScale.z), Quaternion.identity);
 				Wave.transform.parent = transform;
-
+				
 			}
 			oldPosition.z = player.transform.position.z;
 		}

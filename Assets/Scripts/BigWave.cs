@@ -7,6 +7,11 @@ public class BigWave : MonoBehaviour {
 	public GameObject OceanManager;
 	private OceanManager oceanManager;
 
+	private float waveHeight;
+	private float waveSize;
+	private float waveSpeed;
+	private float waveAngle;
+
 	private Dictionary<string, List<float>> oldWaveProperties = new Dictionary<string, List<float>>();
 
 
@@ -16,6 +21,14 @@ public class BigWave : MonoBehaviour {
 
 		oceanManager = OceanManager.GetComponent<OceanManager>();
 
+	}
+
+	public void SetBigWaveProperties(float height, float size, float speed, float angle)
+	{
+		waveHeight = height;
+		waveSize = size;
+		waveSpeed = speed;
+		waveAngle = angle;
 	}
 
 
@@ -31,7 +44,7 @@ public class BigWave : MonoBehaviour {
 
 			oldWaveProperties[other.ToString()] = waveProperties;
 
-			oceanManager.SetWaveProperties (other.gameObject, 20f, 20f, 0f, 1f);
+			oceanManager.SetWaveProperties(other.gameObject, waveHeight, waveSize, waveAngle, waveSpeed);
 			
 
 		}
@@ -44,6 +57,7 @@ public class BigWave : MonoBehaviour {
 			List<float> waveProperties = new List<float>();
 			waveProperties = oldWaveProperties[other.ToString()];
 
+			Debug.Log(waveProperties[2]);
 			oceanManager.SetWaveProperties(other.gameObject, waveProperties[0], waveProperties[1], waveProperties[2], waveProperties[3]);
 
 		}
