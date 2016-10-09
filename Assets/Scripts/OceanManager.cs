@@ -40,6 +40,14 @@ public class OceanManager : MonoBehaviour {
 	}
 
 	//Changes settings on a wave, doesn't modify frequency because it is basically the same thing as size for now
+	/// <summary>
+	/// Changes the settings on an individual wave.
+	/// </summary>
+	/// <param name="Wave">The wave getting altered</param>
+	/// <param name="height">The hight of the sin wave</param>
+	/// <param name="size">The wavelength of the sin wave</param>
+	/// <param name="angle">The angle across the x-z plane that the sin wave is going</param>
+	/// <param name="speed">How fast the wave goes</param>
 	public void SetWaveProperties (GameObject Wave, float height, float size, float angle, float speed){
 
 		Water water = Wave.GetComponent<Water>();

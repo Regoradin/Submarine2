@@ -18,6 +18,7 @@ public class BigWave : MonoBehaviour {
 
 	}
 
+
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Water"){
@@ -31,6 +32,7 @@ public class BigWave : MonoBehaviour {
 			oldWaveProperties[other.ToString()] = waveProperties;
 
 			oceanManager.SetWaveProperties (other.gameObject, 20f, 20f, 0f, 1f);
+			
 
 		}
 	}
