@@ -35,11 +35,10 @@ public class OceanManager : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		oldPosition = player.transform.position;
 
-		MakeBigWave(new Vector3(0f, 0f, 0f), 20f, 40f, 20f, 4f, 10f, 10f);
+		MakeBigWave(new Vector3(0f, 0f, 0f), 90f, 30f, 40f, 50f, 5f);
 
 	}
 
-	//Changes settings on a wave, doesn't modify frequency because it is basically the same thing as size for now
 	/// <summary>
 	/// Changes the settings on an individual wave.
 	/// </summary>
@@ -48,7 +47,8 @@ public class OceanManager : MonoBehaviour {
 	/// <param name="size">The wavelength of the sin wave</param>
 	/// <param name="angle">The angle across the x-z plane that the sin wave is going in degrees, 0 degrees is z+</param>
 	/// <param name="speed">How fast the wave goes</param>
-	public void SetWaveProperties (GameObject Wave, float height, float size, float angle, float speed){
+	public void SetWaveProperties (GameObject Wave, float height, float size, float angle, float speed)
+	{
 
 		Water water = Wave.GetComponent<Water>();
 
@@ -69,17 +69,26 @@ public class OceanManager : MonoBehaviour {
 		return foundWave;
 	}
 
-	public void MakeBigWave (Vector3 center, float angle, float length, float width, float height, float size, float speed)
+	/// <summary>
+	/// Creates a bigWave gameObject that moves through the water and temporarily alters the small wave properties.
+	/// </summary>
+	/// <param name="center">starting point of the bigWave</param>
+	/// <param name="angle">angle of the bigWave on x-z plane in degrees from z+</param>
+	/// <param name="width">width of the wave parallel to the wave, perpendicular to motion</param>
+	/// <param name="height">height of the wave</param>
+	/// <param name="size">size of individual small waves made by the bigWave</param>
+	/// <param name="speed">speed of the motion of the waves</param>
+	public void MakeBigWave (Vector3 center, float angle, float width, float height, float size, float speed)
 	{
 		Quaternion rotation = Quaternion.identity;
 		rotation.eulerAngles = new Vector3(0f, angle, 0f);
 
 		GameObject bigWave = (GameObject) Instantiate(BigWave, center, rotation);
 
-		bigWave.transform.localScale = new Vector3(width, wave.transform.localScale.y * height, length);
+		bigWave.transform.localScale = new Vector3(width, wave.transform.localScale.y * height);
 
 		BigWave bigwave = bigWave.GetComponent<BigWave>();
-		bigwave.SetBigWaveProperties(height, size, speed, angle);
+		bigwave.SetBigWaveProperties(height, size, speed);
 
 	}
 

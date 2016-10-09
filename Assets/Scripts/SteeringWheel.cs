@@ -44,8 +44,6 @@ public class SteeringWheel : MonoBehaviour {
 	{
 		if(playerInRange){
 			if (Input.GetButtonDown("Submit")) {
-				Debug.Log ("buttonDown");
-
 				if (seated) {
 					seated = false;
 					player.transform.localPosition = oldPosition;

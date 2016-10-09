@@ -17,7 +17,6 @@ public class SailController : MonoBehaviour {
 		if (other.tag == "Player") {
 
 			if (Input.GetButtonDown ("Submit")) {
-				Debug.Log ("sail switching");
 				anim.SetTrigger ("Sail Switch");
 
 				}
