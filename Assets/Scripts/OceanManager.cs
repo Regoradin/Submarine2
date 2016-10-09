@@ -32,7 +32,7 @@ public class OceanManager : MonoBehaviour {
 		shiftX = 0;
 		shiftZ = 0;
 
-		MakeBigWave(new Vector3 (4,0,2), 6, 20, 1f, 40f, 2f);
+		MakeBigWave(new Vector3 (4,0,2), 6, 20, 20f, 40f, 2f);
 
 		player = GameObject.Find ("Player");
 		oldPosition = player.transform.position;
@@ -67,26 +67,7 @@ public class OceanManager : MonoBehaviour {
 
 		GameObject bigWave = (GameObject)Instantiate (BigWave, center, angle_quat);
 
-		bigWave.transform.localScale = new Vector3 (width, 1f, length);
-
-
-//		var random_wave = new GameObject ();
-//		random_wave.transform.position = new Vector3(center.x, 0, center.y);
-//		random_wave.transform.eulerAngles = new Vector3(0, angle, 0);
-//
-//		angle = angle * Mathf.Deg2Rad;
-//
-//		//creates integer side lengths to a hypotenuse of the desired wave angle
-//		float yFactor = (1 / Mathf.Sin (angle));
-//		float xFactor = (1 / Mathf.Cos (angle));
-//
-//
-//		int xStep = Mathf.RoundToInt (Mathf.Cos (angle) * xFactor * yFactor);
-//		int yStep = Mathf.RoundToInt (Mathf.Sin (angle) * yFactor * xFactor);
-//
-//		center = Vector2.Scale (center, new Vector2(wave.transform.localScale.x, wave.transform.localScale.z));
-
-
+		bigWave.transform.localScale = new Vector3 (width, height, length);
 
 	}
 

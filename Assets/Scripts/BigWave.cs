@@ -7,7 +7,7 @@ public class BigWave : MonoBehaviour {
 	public GameObject OceanManager;
 	private OceanManager oceanManager;
 
-	private Dictionary<string, List<float>> oldWaveProperties;
+	private Dictionary<string, List<float>> oldWaveProperties = new Dictionary<string, List<float>>();
 
 
 	void Start(){
@@ -16,11 +16,10 @@ public class BigWave : MonoBehaviour {
 
 		oceanManager = OceanManager.GetComponent<OceanManager>();
 
-		Dictionary<string, List<float>> oldWaveProperties = new Dictionary<string, List<float>> ();
-
 	}
 
-	void OnTriggerEnter (Collider other){
+	void OnTriggerEnter (Collider other)
+	{
 		if (other.tag == "Water"){
 
 			List<float> waveProperties = new List<float> ();
@@ -29,21 +28,23 @@ public class BigWave : MonoBehaviour {
 			waveProperties.Add (other.GetComponent<Water> ().waveAngle);
 			waveProperties.Add (other.GetComponent<Water> ().waveSpeed);
 
-			oldWaveProperties.Add (other.ToString, waveProperties);
+			oldWaveProperties[other.ToString()] = waveProperties;
 
-			oceanManager.SetWaveProperties (other.gameObject, 100f, 20f, 0f, 1f);
+			oceanManager.SetWaveProperties (other.gameObject, 20f, 20f, 0f, 1f);
 
 		}
 	}
 
 	void OnTriggerExit (Collider other){
+		if (other.tag == "Water")
+		{
 
-		List<float> waveProperties = new List<float> ();
-		waveProperties = oldWaveProperties.TryGetValue(other.ToString, out);
+			List<float> waveProperties = new List<float>();
+			waveProperties = oldWaveProperties[other.ToString()];
 
+			oceanManager.SetWaveProperties(other.gameObject, waveProperties[0], waveProperties[1], waveProperties[2], waveProperties[3]);
 
-		oceanManager.SetWaveProperties(other.gameObject, oldWaveProperties.
-
+		}
 	}
 
 }

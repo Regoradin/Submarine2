@@ -91,6 +91,7 @@ MonoBehaviour:
   waveFrequency: 1
   waveHeight: 5
   waveSize: 20
+  waveSpeed: 1
   waveAngle: 0
   waterDrag: 1
 --- !u!1001 &100100000
