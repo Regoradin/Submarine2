@@ -348,6 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d7c3ecaa13a9a40995958d9c3b61ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballastCapacity: 60000
+  ballastFillSpeed: 100
 --- !u!23 &311845541
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -419,7 +421,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311845539}
   serializedVersion: 2
-  m_Mass: 15000
+  m_Mass: 65000
   m_Drag: 0.5
   m_AngularDrag: 0.5
   m_UseGravity: 1
@@ -1330,7 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd74addc6ca3584499c6ffdd65ef5749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boat: {r: 0.56078434, g: 0.30588236, b: 0.03529412, a: 1}
+  boat_color: {r: 0.56078434, g: 0.30588236, b: 0.03529412, a: 0}
   seated: 0
   speed: 90000
   rotationSpeed: 90000

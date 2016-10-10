@@ -5,7 +5,7 @@ public class SteeringWheel : MonoBehaviour {
 
 	private Renderer rend;
 	private Color red =  new Color (1, 0, 0, 1);
-	public Color boat;
+	public Color boat_color;
 	public bool seated = false;
 	private Vector3 oldPosition;
 
@@ -17,11 +17,13 @@ public class SteeringWheel : MonoBehaviour {
 	private GameObject sail;
 	private GameObject player;
 	private bool playerInRange;
+	private Rigidbody boat;
 
 	void Start(){
 
 		rend = GetComponent<Renderer> ();
 		sail = GameObject.Find ("Mast");
+		boat = GetComponentInParent<Rigidbody>();
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -77,8 +79,8 @@ public class SteeringWheel : MonoBehaviour {
 			forwardMovement = new Vector3 (0f, 0f, Input.GetAxis("Vertical"));
 			rotation = new Vector3 (0f, Input.GetAxis ("Horizontal"), 0f);
 
-			GetComponentInParent<Rigidbody> ().AddRelativeForce (forwardMovement * speed);
-			GetComponentInParent<Rigidbody> ().AddRelativeTorque(rotation * rotationSpeed);
+			boat.AddRelativeForce (forwardMovement * speed);
+			boat.AddRelativeTorque(rotation * rotationSpeed);
 
 		}
 
@@ -87,7 +89,7 @@ public class SteeringWheel : MonoBehaviour {
 	void OnTriggerExit (Collider other){
 		if (other.tag == "Player") 
 		{
-			rend.material.color = boat;
+			rend.material.color = boat_color;
 			player = null;
 			playerInRange = false;
 		}
