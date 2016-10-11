@@ -31,4 +31,21 @@ public class SailController : MonoBehaviour {
 			}
 		}
 	}
+
+	public void SwitchSail()
+	{
+		anim.SetTrigger("Sail Switch");
+
+		if (anim.GetCurrentAnimatorStateInfo(0).IsName("Sail Up"))
+		{
+
+			sailUp = true;
+
+		}
+		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Sail Up"))
+		{
+
+			sailUp = false;
+		}
+	}
 }

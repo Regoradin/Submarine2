@@ -88,10 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a842108cd656847a5d49e0b703e5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveHeight: 0
+  waveHeight: 2
   waveSize: 10
   waveSpeed: 5
-  waveAngle: 90
+  waveAngle: 36
   waterDrag: 1
 --- !u!1001 &100100000
 Prefab:

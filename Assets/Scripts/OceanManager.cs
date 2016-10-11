@@ -35,7 +35,7 @@ public class OceanManager : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		oldPosition = player.transform.position;
 
-		//MakeBigWave(new Vector3(100f, 0f, 0f), 90f, 30f, 40f, 30f, 5f);
+		//MakeBigWave(new Vector3(20f, 0f, 0f), 36f, 30f, 40f, 30f, 5f);
 
 		//MakeBigWave(new Vector3(150f, 0f, 0f), 90f, 30f, 40f, 30f, 5f);
 
