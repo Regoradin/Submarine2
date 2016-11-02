@@ -22,6 +22,8 @@ public class HealthManager : MonoBehaviour {
 			{
 				health = 0;
 			}
+
+			Debug.Log(value);
 		}
 	}
 	
