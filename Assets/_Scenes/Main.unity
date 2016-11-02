@@ -667,6 +667,7 @@ GameObject:
   - 33: {fileID: 751790127}
   - 136: {fileID: 751790126}
   - 23: {fileID: 751790125}
+  - 114: {fileID: 751790128}
   m_Layer: 0
   m_Name: Hull
   m_TagString: Untagged
@@ -733,6 +734,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751790123}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &751790128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 751790123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074d0861ed0bd794fa5d9576e51e94d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 0
 --- !u!1 &996629038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,8 +1100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 145748, guid: b45c199b1aa55064b80323ffe50e28f9, type: 2}
-  initialOceanX: 5
-  initialOceanZ: 5
+  initialOceanX: 10
+  initialOceanZ: 10
   shiftX: 0
   shiftZ: 0
   BigWave: {fileID: 108220, guid: 34e2f251af27ddc4b9fd22dd8e0da46d, type: 2}
@@ -1624,8 +1638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat_color: {r: 0.56078434, g: 0.30588236, b: 0.03529412, a: 0}
   seated: 0
-  speed: 90000
-  rotationSpeed: 90000
+  speed: 200000
+  rotationSpeed: 200000
 --- !u!33 &1768942386
 MeshFilter:
   m_ObjectHideFlags: 0
