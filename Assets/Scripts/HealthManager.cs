@@ -13,19 +13,23 @@ public class HealthManager : MonoBehaviour {
 		}
 		set
 		{
-			health = value;
-			if(health > maxHealth)
-			{
-				health = maxHealth;
+			if (!unbreakable) {
+				health = value;
+				if (health > maxHealth)
+				{
+					health = maxHealth;
+				}
+				if (health < 0)
+				{
+					health = 0;
+				}
 			}
-			if (health < 0)
-			{
-				health = 0;
-			}
-
-			Debug.Log(value);
 		}
 	}
+	public bool unbreakable = false;
+
+	public int damage;
+	private float minSpeed =0f;
 	
 	private Color defaultColor;
 
@@ -55,5 +59,18 @@ public class HealthManager : MonoBehaviour {
 			rend.material.color = defaultColor;
 		}
 
+	}
+
+	void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log("Unchecked collision between" + gameObject.name + "and" + collision.contacts[0].otherCollider.gameObject.name);
+		if (collision.gameObject.GetComponent<HealthManager>())
+		{
+			Debug.Log("Collision between" + gameObject.name + "and" + collision.gameObject.name);
+			if (collision.relativeVelocity.magnitude >= minSpeed && collision.collider.gameObject.GetComponent<HealthManager>())
+			{
+				collision.gameObject.GetComponent<HealthManager>().Health -= damage;
+			}
+		}
 	}
 }
