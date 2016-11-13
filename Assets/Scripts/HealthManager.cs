@@ -44,14 +44,14 @@ public class HealthManager : MonoBehaviour {
 
 	void Update () {
 
-		if(health <= maxHealth / 2)
-		{
-			rend.material.color = new Color(1, 0, 0, 1);
-		}
-
-		if(health == 0)
+		if (health == 0)
 		{
 			Destroy(gameObject);
+		}
+
+		else if (health <= maxHealth / 2)
+		{
+			rend.material.color = new Color(1, 0, 0, 1);
 		}
 
 		else
@@ -63,13 +63,14 @@ public class HealthManager : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log("Unchecked collision between" + gameObject.name + "and" + collision.contacts[0].otherCollider.gameObject.name);
+		//Debug.Log("Unchecked collision between" + gameObject.name + "and" + collision.contacts[0].otherCollider.gameObject.name);
 		if (collision.gameObject.GetComponent<HealthManager>())
 		{
 			Debug.Log("Collision between" + gameObject.name + "and" + collision.gameObject.name);
 			if (collision.relativeVelocity.magnitude >= minSpeed && collision.collider.gameObject.GetComponent<HealthManager>())
 			{
 				collision.gameObject.GetComponent<HealthManager>().Health -= damage;
+				Debug.Log(collision.gameObject.name + " health: " + collision.gameObject.GetComponent<HealthManager>().Health);
 			}
 		}
 	}
