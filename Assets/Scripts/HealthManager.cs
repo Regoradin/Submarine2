@@ -27,6 +27,7 @@ public class HealthManager : MonoBehaviour {
 		}
 	}
 	public bool unbreakable = false;
+	public Color damaged = new Color(1, 0, 0);
 
 	public int damage;
 	private float minSpeed =0f;

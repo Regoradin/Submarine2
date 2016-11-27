@@ -18,7 +18,7 @@ public class Float : MonoBehaviour {
 
 			float sunkPoints = 0;
 			float totalPoints = 0;
-			float volume = transform.lossyScale.x * transform.lossyScale.y * transform.lossyScale.z;
+			float volume = GetComponent<Collider>().bounds.size.x * GetComponent<Collider>().bounds.size.y * GetComponent<Collider>().bounds.size.z;
 
 			//loops through 1331 test points in a 11x11x11 grid throughout the box and creates a Vector3 defining each point as a multiple of the full extents of the box.
 			for (float x = -.5f; x <= .5f; x = x + .1f) {
@@ -36,7 +36,7 @@ public class Float : MonoBehaviour {
 				}
 			}
 
-			rigidBody.AddForceAtPosition (((sunkPoints / totalPoints) * volume * waterDensity * -Physics.gravity), transform.position);
+			rigidBody.AddForceAtPosition (((sunkPoints / totalPoints) * volume * waterDensity * -Physics.gravity), GetComponent<Collider>().bounds.center);
 
 		}
 	}
