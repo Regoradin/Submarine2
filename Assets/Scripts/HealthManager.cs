@@ -51,7 +51,7 @@ public class HealthManager : MonoBehaviour {
 
 		else if (health <= maxHealth / 2)
 		{
-			rend.material.color = new Color(1, 0, 0, 1);
+			rend.material.color = damaged;
 		}
 
 		else
