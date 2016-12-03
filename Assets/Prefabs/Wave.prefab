@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6520846}
   - 23: {fileID: 2353584}
   - 114: {fileID: 11455986}
+  - 114: {fileID: 11481324}
   m_Layer: 0
   m_Name: Wave
   m_TagString: Water
@@ -88,11 +89,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a842108cd656847a5d49e0b703e5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveHeight: 2
+  waveHeight: 0
   waveSize: 10
   waveSpeed: 5
   waveAngle: 36
   waterDrag: 1
+--- !u!114 &11481324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30aff4500060e140b4a6ccbdbdc49c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
