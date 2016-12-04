@@ -19,7 +19,6 @@ public class NewFloat : MonoBehaviour {
 		//the first if statement checks if the top of the object is below the water level and if so subtracts the height of the water above the object from the object, otherwise it's just the whole height.
 		if (highest_height < water_height)
 		{
-			Debug.Log("Head Below Water");
 			sunk_height = water_height - lowest_height - (water_height - highest_height);
 		}
 		else
@@ -29,7 +28,7 @@ public class NewFloat : MonoBehaviour {
 		float sunk_volume = transform.localScale.x * transform.localScale.z * sunk_height;
 		
 		Vector3 bouyancy_force = sunk_volume* water_density * -Physics.gravity;
-		Debug.Log(sunk_volume + " " + transform.localScale.x + " " + transform.localScale.z + " " + sunk_height);
+
 		//the bouyancy force is applied at the height of the center of bouyancy, but directly above the water block that is providing the bouyancy. any weirdness from this should be minimalized with larger ships.
 		other.attachedRigidbody.AddForceAtPosition(bouyancy_force, new Vector3(transform.position.x, other_collider.bounds.center.y, transform.position.z));
 
