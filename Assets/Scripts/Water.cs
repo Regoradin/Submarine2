@@ -12,13 +12,18 @@ public class Water : MonoBehaviour {
 	private OceanManager oceanManager;
 
 	public float waterDrag;
+	public float water_angular_drag;
 	private float oldDrag;
+	private float old_angular_drag;
 
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Floatable") {
 			if (other.attachedRigidbody) {
 				oldDrag = other.attachedRigidbody.drag;
+				old_angular_drag = other.attachedRigidbody.angularDrag;
+
 				other.attachedRigidbody.drag = waterDrag;
+				other.attachedRigidbody.angularDrag = water_angular_drag;
 			}
 		}
 
@@ -27,6 +32,7 @@ public class Water : MonoBehaviour {
 	void OnTriggerExit (Collider other){
 		if (other.tag == "Floatable") {
 			if (other.attachedRigidbody)
+				other.attachedRigidbody.angularDrag = old_angular_drag;
 				other.attachedRigidbody.drag = oldDrag;
 		}
 

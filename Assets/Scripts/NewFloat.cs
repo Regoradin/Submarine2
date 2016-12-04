@@ -3,28 +3,35 @@ using System.Collections;
 
 public class NewFloat : MonoBehaviour {
 
+	public float water_density;
 	// A new floating script that will be made to work when applied to waves, which should be make everything a lot more efficient, especially for smaller ships
 
 	void OnTriggerStay(Collider other)
 	{
-		//other_angle_rad contains the floating objects orientation in radians so it plays nice with the trig stuff later on.
-		Vector3 other_angle_rad = new vector3(
-			Mathf.Deg2Rad * other.transform.eulerAngles.x,
-			Mathf.Deg2Rad * other.transform.eulerAngles.y,
-			Mathf.Deg2Rad * other.transform.eulerAngles.z);
+		Collider other_collider = other.GetComponent<Collider>();
 
-		//this math is all a whole mess of triangles and trig that ends with local_difference, a vector3 that when subtracted from the floating object's position on the local grid,
-		//will give the coords of the lowest point on the object in local space.
-		float difference_x = transform.position.x - other.transform.position.x;
-		float difference_y = transform.position.y - other.transform.position.y;
-		float difference_z = transform.position.z - other.transform.position.z;
+		float water_height = transform.position.y + transform.localScale.y/2;
 
-		Vector3 local_difference = new Vector3(difference_x / Mathf.Sin(other_angle_rad.y) / Mathf.Sin(other_angle_rad.z),
-			other.transform.lossyScale.y/2, 
-			difference_z / Mathf.Sin(other_angle_rad.y) / Mathf.Sin(other_angle_rad.x));
+		float lowest_height = other.transform.position.y - other_collider.bounds.extents.y;
+		float highest_height = other.transform.position.y + other_collider.bounds.extents.y;
 
-		Vector3 lowest_point = new Vector3(other.transform.localPosition.x - local_difference.x, other.transform.localPosition.y - local_difference.y, other.transform.localPosition.z - local_difference.z);
+		float sunk_height = 0f;
+		//the first if statement checks if the top of the object is below the water level and if so subtracts the height of the water above the object from the object, otherwise it's just the whole height.
+		if (highest_height < water_height)
+		{
+			Debug.Log("Head Below Water");
+			sunk_height = water_height - lowest_height - (water_height - highest_height);
+		}
+		else
+		{
+			sunk_height = water_height - lowest_height;
+		}
+		float sunk_volume = transform.localScale.x * transform.localScale.z * sunk_height;
+		
+		Vector3 bouyancy_force = sunk_volume* water_density * -Physics.gravity;
+		Debug.Log(sunk_volume + " " + transform.localScale.x + " " + transform.localScale.z + " " + sunk_height);
+		//the bouyancy force is applied at the height of the center of bouyancy, but directly above the water block that is providing the bouyancy. any weirdness from this should be minimalized with larger ships.
+		other.attachedRigidbody.AddForceAtPosition(bouyancy_force, new Vector3(transform.position.x, other_collider.bounds.center.y, transform.position.z));
 
-		Debug.Log(other.name + " " + other.transform.TransformPoint(lowest_point).y);
 	}
 }
