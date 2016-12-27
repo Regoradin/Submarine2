@@ -39,6 +39,9 @@ public class NewFloat : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
+
+		//Z-ROTATION: Finds the top and bottom height of the ship cube in the middle of the wave after the rotation about the z axis has been applied
+
 		float lowest_point_x = -1;
 		float highest_point_x = -1;
 		//finds the x value of the lowest and highest points on the floating box by finding the corner of the bounding box in world coords and then doing some trig. Extents are added or subtracted if angle is pos/negative
@@ -66,6 +69,50 @@ public class NewFloat : MonoBehaviour {
 		{
 			top_height = transform.position.y + transform.localScale.y/2;
 		}
+
+		Debug.Log(other.name + " bottom_height first method " + bottom_height);
+
+		//totally unrotated
+		bottom_height = other.transform.position.y - other.transform.localScale.y / 2;
+		Debug.Log("bottom_height unrotated " + bottom_height);
+
+		float x_difference = other.transform.position.x - transform.position.x;
+
+		float y_difference = other.transform.position.y - bottom_height;
+
+		float unrotated_z = Mathf.Atan(y_difference / x_difference);
+		float rotated_z = unrotated_z + (other.transform.eulerAngles.z * Mathf.Deg2Rad);
+
+		bottom_height = other.transform.position.y - (Mathf.Tan(rotated_z) * x_difference);
+
+		Debug.Log("x diff " + x_difference);
+		Debug.Log("y diff " + y_difference);
+		Debug.Log("unrotated z " + unrotated_z);
+		Debug.Log("rotated z " + rotated_z);
+		Debug.Log("Trig stuff " + (Mathf.Tan(rotated_z) * x_difference));
+		Debug.Log("bottom_height z rotated " + bottom_height);
+
+
+
+
+		//X-ROTATION: Adjusts the above top and bottom height after a z rotation is applied.
+
+		float z_difference = other.transform.position.z - transform.position.z;
+
+		y_difference = other.transform.position.y - bottom_height;
+
+		float unrotated_x = Mathf.Atan(y_difference / z_difference);
+		float rotated_x = unrotated_x + (other.transform.eulerAngles.x * Mathf.Deg2Rad);
+
+		bottom_height = other.transform.position.y - (Mathf.Tan(rotated_x) * z_difference);
+
+		//Debug.Log("z_diff " + z_difference);
+		//Debug.Log("y_diff " + y_difference);
+		//Debug.Log("unrotated_x " + unrotated_x);
+		//Debug.Log("rotated_x " + rotated_x);
+		//Debug.Log("trigg stuff " + (Mathf.Tan(rotated_x) * z_difference));
+		Debug.Log("bottom_height x rotated " + bottom_height);
+
 
 	}
 }
