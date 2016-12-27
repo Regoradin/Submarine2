@@ -85,11 +85,13 @@ public class NewFloat : MonoBehaviour {
 
 		bottom_height = other.transform.position.y - (Mathf.Tan(rotated_z) * x_difference);
 
-		Debug.Log("x diff " + x_difference);
-		Debug.Log("y diff " + y_difference);
-		Debug.Log("unrotated z " + unrotated_z);
-		Debug.Log("rotated z " + rotated_z);
-		Debug.Log("Trig stuff " + (Mathf.Tan(rotated_z) * x_difference));
+		Debug.Log("bottom_height pre-adjust " + bottom_height);
+		//adjusts by the amount that this method is wrong. complicated geometry ensues.
+		float adjustment = (Mathf.Sin(unrotated_z) * ((x_difference / Mathf.Cos(rotated_z)) - (x_difference / Mathf.Cos(unrotated_z))))/Mathf.Sin(Mathf.PI/2-other.transform.eulerAngles.z);
+		bottom_height = bottom_height + adjustment;
+
+
+		Debug.Log("adjustment " + adjustment);
 		Debug.Log("bottom_height z rotated " + bottom_height);
 
 
@@ -111,7 +113,7 @@ public class NewFloat : MonoBehaviour {
 		//Debug.Log("unrotated_x " + unrotated_x);
 		//Debug.Log("rotated_x " + rotated_x);
 		//Debug.Log("trigg stuff " + (Mathf.Tan(rotated_x) * z_difference));
-		Debug.Log("bottom_height x rotated " + bottom_height);
+		//Debug.Log("bottom_height x rotated " + bottom_height);
 
 
 	}
