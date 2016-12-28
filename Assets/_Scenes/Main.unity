@@ -247,7 +247,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 29032865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 55.29, z: 0}
+  m_LocalPosition: {x: 25.59, y: 39.5, z: 0}
   m_LocalScale: {x: 20, y: 5, z: 20}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -3048,7 +3048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave: {fileID: 145748, guid: b45c199b1aa55064b80323ffe50e28f9, type: 2}
   initialOceanX: 1
-  initialOceanZ: 0
+  initialOceanZ: 1
   shiftX: 0
   shiftZ: 0
   BigWave: {fileID: 108220, guid: 34e2f251af27ddc4b9fd22dd8e0da46d, type: 2}

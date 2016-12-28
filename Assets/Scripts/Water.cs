@@ -11,10 +11,14 @@ public class Water : MonoBehaviour {
 	private GameObject player;
 	private OceanManager oceanManager;
 
+	public GameObject TrackerBox;
+	private Tracker tracker;
+
 	public float waterDrag;
 	public float water_angular_drag;
 	private float oldDrag;
 	private float old_angular_drag;
+
 
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Floatable") {
@@ -25,6 +29,9 @@ public class Water : MonoBehaviour {
 				other.attachedRigidbody.drag = waterDrag;
 				other.attachedRigidbody.angularDrag = water_angular_drag;
 			}
+
+			tracker.colliding = true;
+			Debug.Log("colliding = true");
 		}
 
 	}
@@ -36,15 +43,23 @@ public class Water : MonoBehaviour {
 				other.attachedRigidbody.drag = oldDrag;
 		}
 
+		tracker.colliding = false;
+		Debug.Log("Colldiing = false");
+
 	}
 
-	void Start(){		
+	void Start (){		
 		player = GameObject.Find ("Player");
 		oceanManager = GetComponentInParent<OceanManager> ();
 
 		waveAngle = waveAngle * Mathf.Deg2Rad;
 
 		transform.name = "Wave x: " + (transform.position.x/transform.localScale.x).ToString () +" z: " + (transform.position.z/transform.localScale.z).ToString();
+
+		GameObject trackerBox = (GameObject)Instantiate(TrackerBox);
+		trackerBox.transform.localScale = new Vector3(transform.localScale.x, .1f, transform.localScale.z);
+		trackerBox.transform.parent = transform;
+		tracker = GetComponentInChildren<Tracker>();
 	}
 
 	void Update () {
