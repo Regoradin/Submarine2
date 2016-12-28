@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Float : MonoBehaviour {
 
+	//NOTE: THIS IS NOW OBSOLETE. THE RESULTS OF THIS IS A LOT SMOOTHER THAN THE CURRENT FLOATING IMPLETEMENTATION, BUT IT TAKES WAY TOO MUCH PROCESSING POWER.
+
 	private Rigidbody rigidBody;
 
 	public float waterDensity;

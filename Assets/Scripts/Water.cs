@@ -13,6 +13,7 @@ public class Water : MonoBehaviour {
 
 	public GameObject TrackerBox;
 	private Tracker tracker;
+	public Collider floating_collider;
 	public float waterDensity;
 
 	public float waterDrag;
@@ -31,20 +32,21 @@ public class Water : MonoBehaviour {
 				other.attachedRigidbody.angularDrag = water_angular_drag;
 			}
 
+			floating_collider = other;
 			tracker.colliding = true;
 		}
 
 	}
 
 	void OnTriggerExit (Collider other){
-		if (other.tag == "Floatable") {
+		if (other.tag == "Floatable")
+		{
 			if (other.attachedRigidbody)
 				other.attachedRigidbody.angularDrag = old_angular_drag;
-				other.attachedRigidbody.drag = oldDrag;
+			other.attachedRigidbody.drag = oldDrag;
+
+			tracker.colliding = false;
 		}
-
-		tracker.colliding = false;
-
 	}
 
 	void OnTriggerStay(Collider other)
