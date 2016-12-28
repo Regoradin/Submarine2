@@ -64,6 +64,7 @@ public class Water : MonoBehaviour {
 	}
 
 	void Start (){		
+
 		player = GameObject.Find ("Player");
 		oceanManager = GetComponentInParent<OceanManager> ();
 
