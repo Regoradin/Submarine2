@@ -13,6 +13,7 @@ public class Water : MonoBehaviour {
 
 	public GameObject TrackerBox;
 	private Tracker tracker;
+	public float waterDensity;
 
 	public float waterDrag;
 	public float water_angular_drag;
@@ -31,7 +32,6 @@ public class Water : MonoBehaviour {
 			}
 
 			tracker.colliding = true;
-			Debug.Log("colliding = true");
 		}
 
 	}
@@ -44,7 +44,22 @@ public class Water : MonoBehaviour {
 		}
 
 		tracker.colliding = false;
-		Debug.Log("Colldiing = false");
+
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if (other.tag == "Floatable")
+		{
+			float width = transform.localScale.x;
+			float length = transform.localScale.z;
+			float height = tracker.top_height - tracker.bottom_height;
+
+			float volume = length * width * height;
+
+			Vector3 bouyancy = volume * -Physics.gravity * waterDensity;
+			other.GetComponentInParent<Rigidbody>().AddForceAtPosition(bouyancy, other.bounds.center);
+		}
 
 	}
 
