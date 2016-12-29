@@ -9,14 +9,12 @@ public class PlayerMover : MonoBehaviour {
 	private GameObject chair;
 	private CharacterController controller;
 
-	// Use this for initialization
 	void Start () {
 		chair = GameObject.Find ("Steering Wheel");
 		controller = GetComponent<CharacterController> ();
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 		if (!chair.GetComponent<SteeringWheel> ().seated) 

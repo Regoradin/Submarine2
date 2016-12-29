@@ -1,0 +1,9 @@
+TODO:
+
+Modeling:
+fix flipped faces on test sub: boxes, top hatch, walls to cargo area.
+Make torpedoes
+Make/find a gun turret of some sort to put on top
+
+Code:
+Figure out how to do movement constraint/modification (sitting in chairs or going up ladders), switch to a rigidbody based model perhaps?

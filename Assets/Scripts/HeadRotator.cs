@@ -11,12 +11,7 @@ public class HeadRotator : MonoBehaviour {
 	public float maxY;
 	public float minY;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 		transform.Rotate (-Input.GetAxis("Mouse Y")* looksensitivity, Input.GetAxis("Mouse X") * looksensitivity, 0.0f, Space.Self);
