@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6670632ddfd15e541abbf89caa69795d
-timeCreated: 1480282986
+guid: efd2bf52df094444b8666ad4bf7f5226
+timeCreated: 1482984480
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -67,24 +67,18 @@ ModelImporter:
     100118: ID340
     100120: ID344
     100122: ID348
-    100124: ID352
-    100126: ID356
-    100128: ID360
-    100130: ID364
-    100132: ID368
-    100134: ID372
-    100136: ID40
-    100138: ID46
-    100140: ID52
-    100142: ID58
-    100144: ID64
-    100146: ID70
-    100148: ID76
-    100150: ID82
-    100152: ID88
-    100154: ID94
-    100156: Last Saved SketchUp View
-    100158: //RootNode
+    100124: ID40
+    100126: ID46
+    100128: ID52
+    100130: ID58
+    100132: ID64
+    100134: ID70
+    100136: ID76
+    100138: ID82
+    100140: ID88
+    100142: ID94
+    100144: Last Saved SketchUp View
+    100146: //RootNode
     400000: ID10
     400002: ID100
     400004: ID106
@@ -147,24 +141,18 @@ ModelImporter:
     400118: ID340
     400120: ID344
     400122: ID348
-    400124: ID352
-    400126: ID356
-    400128: ID360
-    400130: ID364
-    400132: ID368
-    400134: ID372
-    400136: ID40
-    400138: ID46
-    400140: ID52
-    400142: ID58
-    400144: ID64
-    400146: ID70
-    400148: ID76
-    400150: ID82
-    400152: ID88
-    400154: ID94
-    400156: Last Saved SketchUp View
-    400158: //RootNode
+    400124: ID40
+    400126: ID46
+    400128: ID52
+    400130: ID58
+    400132: ID64
+    400134: ID70
+    400136: ID76
+    400138: ID82
+    400140: ID88
+    400142: ID94
+    400144: Last Saved SketchUp View
+    400146: //RootNode
     2300000: ID10
     2300002: ID100
     2300004: ID106
