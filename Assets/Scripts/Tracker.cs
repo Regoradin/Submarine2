@@ -32,6 +32,10 @@ public class Tracker : MonoBehaviour
 			while (parentWater.floating_collider.bounds.Intersects(GetComponent<Collider>().bounds) == false)
 			{
 				transform.Translate(Vector3.down * accuracy);
+				if (transform.localPosition.y <= -.5f)
+				{
+					colliding = false;
+				}
 			}
 			//once it does intersect however set the top height...
 			top_height = transform.position.y;
@@ -39,6 +43,10 @@ public class Tracker : MonoBehaviour
 			while (parentWater.floating_collider.bounds.Intersects(GetComponent<Collider>().bounds) == true)
 			{
 				transform.Translate(Vector3.down * accuracy);
+				if (transform.localPosition.y <= -.5f)
+				{
+					colliding = false;
+				}
 			}
 			//at which point set the bottom height and reset to the top
 			bottom_height = transform.position.y;

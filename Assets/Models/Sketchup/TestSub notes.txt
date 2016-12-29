@@ -1,0 +1,5 @@
+Flipped faces:
+Boxes in storage room
+storage room wall
+
+Issue: Scaling is weird, maybe fix that? Who knows what the future holds.
