@@ -23,12 +23,13 @@ public class PlayerMover : MonoBehaviour {
 			movement = transform.GetChild (1).TransformDirection (movement);
 			movement.y = 0.0f;
 
-			movement += Vector3.down;
+			movement = movement * speed;
+			movement += Physics.gravity;
 
 		}
 		//If this if{} is not there, then it still works but gives a warning every frame due to inactive charcontroller when seated. 
 		if (controller.enabled)
-			controller.Move (movement * speed);
+			controller.Move (movement);
 
 	}
 }

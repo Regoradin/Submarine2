@@ -7,7 +7,10 @@ public class Ladder : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		//goes all figity because player mover is also calling move() with a downward move, so it goes weird. Fix later.
-		other.GetComponent<CharacterController>().Move(Vector3.up * climbSpeed);
+		if (other.tag == "Player")
+		{
+			//goes all figity because player mover is also calling move() with a downward move, so it goes weird. Fix later.
+			other.GetComponent<CharacterController>().Move(Vector3.up * climbSpeed);
+		}
 	}
 }
