@@ -12,7 +12,7 @@ public class Cannon : MonoBehaviour {
 
 		//Makes it go fast
 		Rigidbody shot_rb = shot.GetComponent<Rigidbody>();
-		shot_rb.AddForce(new Vector3(1000f, 0f) * transform.rotation);
+		shot_rb.AddRelativeForce(new Vector3(1000f, 0f));
 	}
 
 	void Start()

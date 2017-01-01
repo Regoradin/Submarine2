@@ -17,8 +17,9 @@ public class PlayerMover : MonoBehaviour {
 	
 	void Update () {
 		
-		if (!chair.GetComponent<SteeringWheel> ().seated) 
-		{
+		//turning off this for loop outside so it doesn't require the chair on the old boat to run it
+		//if (!chair.GetComponent<SteeringWheel> ().seated) 
+		//{
 			movement = new Vector3 (Input.GetAxis ("Horizontal"), 0.0f, Input.GetAxis ("Vertical"));
 			movement = transform.GetChild (1).TransformDirection (movement);
 			movement.y = 0.0f;
@@ -26,7 +27,7 @@ public class PlayerMover : MonoBehaviour {
 			movement = movement * speed;
 			movement += Physics.gravity;
 
-		}
+		//}
 		//If this if{} is not there, then it still works but gives a warning every frame due to inactive charcontroller when seated. 
 		if (controller.enabled)
 			controller.Move (movement);
