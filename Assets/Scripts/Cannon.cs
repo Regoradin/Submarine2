@@ -7,9 +7,12 @@ public class Cannon : MonoBehaviour {
 
 	void Shoot(GameObject ammo) {
 		Debug.Log("shooting!");
-		GameObject shot = (GameObject)Instantiate(ammo, transform.position, Quaternion.identity);
+		//Makes the shot exist
+		GameObject shot = (GameObject)Instantiate(ammo, transform.position, transform.localRotation);
+
+		//Makes it go fast
 		Rigidbody shot_rb = shot.GetComponent<Rigidbody>();
-		shot_rb.AddForce(new Vector3(1000f, 0f));
+		shot_rb.AddForce(new Vector3(1000f, 0f) * transform.rotation);
 	}
 
 	void Start()
