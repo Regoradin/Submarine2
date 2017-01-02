@@ -38,13 +38,11 @@ public class BottomWater : MonoBehaviour
 
 			//report the height world coords fo the wave of the bottom of the floating object/top of the bottomwater to the parent water
 			float top_height = transform.position.y + transform.lossyScale.y / 2;
-			Debug.Log(top_height);
-			//water.bottom_height = top_height;
+			water.bottom_height = top_height;
 
 			//adjust position and scale to fit
 			float newY = (-transform.parent.position.y - transform.parent.localScale.y / 2 - top_height) / 2 + top_height;
 			float newScale = (-transform.parent.position.y - transform.parent.localScale.y / 2 - top_height) / 2;
-
 			//converts newScale from global scale to local scale
 			newScale = newScale / transform.parent.localScale.y * 2;
 

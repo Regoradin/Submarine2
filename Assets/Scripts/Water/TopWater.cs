@@ -6,10 +6,12 @@ public class TopWater : MonoBehaviour {
 	public float accuracy;
 
 	private Water water;
+	private Renderer rend;
 
 	void Start()
 	{
 		water = GetComponentInParent<Water>();
+		rend = GetComponent<Renderer>();
 		//ensures accuracy isn't 0 as that causes crashes on the while loop
 		if (accuracy <= 0)
 		{
@@ -38,7 +40,7 @@ public class TopWater : MonoBehaviour {
 
 			//report the height world coords fo the wave of the top of the floating object/bottom of the topwater to the parent water
 			float bottom_height = transform.position.y - transform.lossyScale.y/2;
-			//water.top_height = bottom_height;
+			water.top_height = bottom_height;
 
 			//adjust position and scale to fit
 			float newY = (transform.parent.position.y + transform.parent.localScale.y/2 - bottom_height) / 2 + bottom_height;
@@ -50,6 +52,13 @@ public class TopWater : MonoBehaviour {
 			transform.localScale = new Vector3(1, newScale, 1);
 			
 		}
+
+		rend.enabled = true;
+		if(transform.localScale.y < .001f)
+		{
+			rend.enabled = false;
+		}
+		
 	}
 
 }

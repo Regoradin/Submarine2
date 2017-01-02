@@ -235,7 +235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &29032866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 29032865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 46.8}
   m_LocalScale: {x: 20, y: 5, z: 20}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1583,7 +1583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &466939255
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4256,8 +4256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 145748, guid: b45c199b1aa55064b80323ffe50e28f9, type: 2}
-  initialOceanX: 5
-  initialOceanZ: 5
+  initialOceanX: 20
+  initialOceanZ: 20
   shiftX: 0
   shiftZ: 0
   BigWave: {fileID: 108220, guid: 34e2f251af27ddc4b9fd22dd8e0da46d, type: 2}
@@ -5364,7 +5364,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 172030, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
