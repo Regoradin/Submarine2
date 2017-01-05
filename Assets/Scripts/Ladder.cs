@@ -10,7 +10,7 @@ public class Ladder : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			//goes all figity because player mover is also calling move() with a downward move, so it goes weird. Fix later.
-			other.GetComponent<CharacterController>().Move(Vector3.up * climbSpeed);
+			other.GetComponent<Rigidbody>().AddForce(-Physics.gravity * climbSpeed);
 		}
 	}
 }

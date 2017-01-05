@@ -4,33 +4,25 @@ using System.Collections;
 public class PlayerMover : MonoBehaviour {
 
 	public float speed;
-	private Vector3 movement = Vector3.zero;
 	public float looksensitivity;
+
 	private GameObject chair;
 	private CharacterController controller;
+	private Rigidbody rb;
 
 	void Start () {
 		chair = GameObject.Find ("Steering Wheel");
-		controller = GetComponent<CharacterController> ();
+		//controller = GetComponent<CharacterController> ();
+		rb = GetComponent<Rigidbody>();
 		
 	}
-	
-	void Update () {
-		
-		//turning off this for loop outside so it doesn't require the chair on the old boat to run it
-		//if (!chair.GetComponent<SteeringWheel> ().seated) 
-		//{
-			movement = new Vector3 (Input.GetAxis ("Horizontal"), 0.0f, Input.GetAxis ("Vertical"));
-			movement = transform.GetChild (1).TransformDirection (movement);
-			movement.y = 0.0f;
 
-			movement = movement * speed;
-			movement += Physics.gravity;
+	void Update()
+	{
+		//localVelocity reads the player input, and then worldVelocity transforms it to to direction of the body
+		Vector3 localVelocity = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")) * speed;
+		Vector3 worldVelocity = GameObject.Find("Body").transform.TransformVector(localVelocity);
 
-		//}
-		//If this if{} is not there, then it still works but gives a warning every frame due to inactive charcontroller when seated. 
-		if (controller.enabled)
-			controller.Move (movement);
-
+		rb.velocity = worldVelocity;
 	}
 }
