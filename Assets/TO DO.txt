@@ -7,3 +7,7 @@ Make/find a gun turret of some sort to put on top
 
 Code:
 Figure out how to do movement constraint/modification (sitting in chairs or going up ladders), switch to a rigidbody based model perhaps?
+
+Character rigidbody: spinning on contact with walls, falling slower than the sub.
+
+Do center of mass manually for the sub to prevent tipping.

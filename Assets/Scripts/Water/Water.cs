@@ -69,7 +69,9 @@ public class Water : MonoBehaviour {
 			float volume = length * width * height;
 
 			Vector3 bouyancy = volume * -Physics.gravity * waterDensity;
-			other.GetComponentInParent<Rigidbody>().AddForceAtPosition(bouyancy, other.bounds.center);
+
+			//adds force at the x-z position of the wave, but the y-position of the center of the boat floater, which when spread accross a lot of waves should approximate geometric center
+			other.GetComponentInParent<Rigidbody>().AddForceAtPosition(bouyancy, new Vector3(transform.position.x, other.bounds.center.y, transform.position.z));
 		}
 
 	}

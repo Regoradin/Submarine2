@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f0e55ee8b20f94188fef47c07a6055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbSpeed: 3
+  climbSpeed: 10
 --- !u!65 &458230040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1577,6 +1577,7 @@ GameObject:
   - 23: {fileID: 466939255}
   - 65: {fileID: 466939259}
   - 54: {fileID: 466939258}
+  - 114: {fileID: 466939260}
   m_Layer: 0
   m_Name: TestSub
   m_TagString: Floatable
@@ -1626,7 +1627,7 @@ Transform:
   m_PrefabInternal: {fileID: 1585285943}
   m_GameObject: {fileID: 466939254}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 69.7, z: 53.1}
+  m_LocalPosition: {x: -7.2, y: 69.7, z: 53.1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children:
@@ -1647,7 +1648,7 @@ Rigidbody:
   m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -1665,6 +1666,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 295.27557, y: 57.864334, z: 51.18111}
   m_Center: {x: 137.38992, y: 0, z: 25.590555}
+--- !u!114 &466939260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 466939254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4434247623ee3c448a410f27775d3467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relative_center_of_mass: {x: 150, y: 0, z: 15}
 --- !u!1 &468815148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,8 +4269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 145748, guid: b45c199b1aa55064b80323ffe50e28f9, type: 2}
-  initialOceanX: 20
-  initialOceanZ: 20
+  initialOceanX: 15
+  initialOceanZ: 15
   shiftX: 0
   shiftZ: 0
   BigWave: {fileID: 108220, guid: 34e2f251af27ddc4b9fd22dd8e0da46d, type: 2}
@@ -5332,7 +5345,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 470430, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.2
       objectReference: {fileID: 0}
     - target: {fileID: 470430, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5368,15 +5381,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5403802, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11406950, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
       propertyPath: climbSpeed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11416324, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
       propertyPath: climbSpeed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77781d18556a7114ab7fb99dde4b2962, type: 2}
@@ -6373,7 +6386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f0e55ee8b20f94188fef47c07a6055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbSpeed: 3
+  climbSpeed: 10
 --- !u!1 &1797741078
 GameObject:
   m_ObjectHideFlags: 0
@@ -7410,7 +7423,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120515227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.2, y: 91.2, z: 49.8}
+  m_LocalPosition: {x: 78.1, y: 91.2, z: 49.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
