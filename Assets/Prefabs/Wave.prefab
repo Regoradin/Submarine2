@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a842108cd656847a5d49e0b703e5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveHeight: 3
+  waveHeight: 0
   waveSize: 10
   waveSpeed: 5
   waveAngle: 36

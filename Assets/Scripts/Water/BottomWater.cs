@@ -26,9 +26,16 @@ public class BottomWater : MonoBehaviour
 		}
 		else
 		{
-			//moves this bit so the top of the bottomWater is at the bottom of the wave
-			transform.localScale = new Vector3(1, .1f, 1);
-			transform.localPosition = new Vector3(0, -(.5f + transform.localScale.y/2) , 0);
+			Debug.Log("Going into the loop bottom");
+			//set the scale to very small for precise iteration
+			transform.localScale = new Vector3(1, accuracy, 1);
+			//sets the position to be at the bottom of the bounding box of the floating object, at the x and z of the wave
+			transform.position = new Vector3(transform.position.x, (water.floating_collider.bounds.min.y - accuracy), transform.position.x);
+
+			//transform.localPosition = new Vector3(0, -.5f, 0);
+
+			//Debug.Log("bottom water " + transform.position);
+
 			//while it doesn't intersect the floating collider, move up until it does intersect the floating collider,
 			//also ensures with every loop that the floating_collider is still actually within the parent collider to prevent infinite loops
 			while (!GetComponent<Collider>().bounds.Intersects(water.floating_collider.bounds) && transform.parent.GetComponent<Collider>().bounds.Intersects(water.floating_collider.bounds))

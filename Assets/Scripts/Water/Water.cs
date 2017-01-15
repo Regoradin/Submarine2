@@ -31,9 +31,13 @@ public class Water : MonoBehaviour {
 	private float old_angular_drag;
 
 
-	void OnTriggerEnter (Collider other){
-		if (other.tag == "Floatable") {
-			if (other.attachedRigidbody) {
+	void OnTriggerEnter(Collider other)
+	{
+		Debug.Log("Entering water " + other.name);
+		if (other.tag == "Floatable")
+		{
+			if (other.attachedRigidbody)
+			{
 				oldDrag = other.attachedRigidbody.drag;
 				old_angular_drag = other.attachedRigidbody.angularDrag;
 
@@ -62,6 +66,7 @@ public class Water : MonoBehaviour {
 	{
 		if (other.tag == "Floatable")
 		{
+			Debug.Log("Running ok?");
 			float width = transform.localScale.x;
 			float length = transform.localScale.z;
 			float height = top_height - bottom_height;
@@ -76,7 +81,7 @@ public class Water : MonoBehaviour {
 
 	}
 
-	void Start (){		
+	void Start (){
 
 		player = GameObject.Find ("Player");
 		oceanManager = GetComponentInParent<OceanManager> ();
