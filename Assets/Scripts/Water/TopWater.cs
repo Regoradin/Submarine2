@@ -28,15 +28,12 @@ public class TopWater : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("Going into the loop top");
 			//moves this bit so the bottom of the topWater is at the top of the wave
 			transform.localScale = new Vector3(1, accuracy, 1);
-			//sets the position to be at the top of the bounding box of the floating object, at the x and z of the wave
-			transform.position = new Vector3(transform.position.x, (water.floating_collider.bounds.max.y + accuracy), transform.position.z);
-			transform.localPosition = new Vector3(0, +.5f, 0);
-			
-			//Debug.Log("actual top water " + transform.position);
-			//Debug.Log("proposed top water " + new Vector3(transform.position.x, water.floating_collider.bounds.max.y, transform.position.z));
+
+			//sets the position to be at the top of the collider plus a little buffer based off the accuracy because it was acting weird without it.
+			transform.position = new Vector3(transform.position.x, (water.floating_collider.bounds.max.y + (accuracy * 50)), transform.position.z);
+
 
 
 			//while it doesn't intersect the floating collider, move down until it does intersect the floating collider,

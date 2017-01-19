@@ -33,7 +33,6 @@ public class Water : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Entering water " + other.name);
 		if (other.tag == "Floatable")
 		{
 			if (other.attachedRigidbody)
@@ -66,7 +65,6 @@ public class Water : MonoBehaviour {
 	{
 		if (other.tag == "Floatable")
 		{
-			Debug.Log("Running ok?");
 			float width = transform.localScale.x;
 			float length = transform.localScale.z;
 			float height = top_height - bottom_height;
